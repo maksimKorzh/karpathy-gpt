@@ -20,13 +20,13 @@ with open('all_haiku.csv') as f:
         if row[4] == 'twaiku':
             c += 1
             if not c % 100: print('Created ' + str(c) + ' samples')
-            if c == 1000: break
+            if c == 100: break
             haiku = '\n'.join([i.strip() for i in row[1:-2]])
             keywords = ', '.join(extract_keywords(haiku))
             sample = '### prompt: ' + keywords + '\n' + haiku + '\n\n'
             data.append(sample)
 
 with open('input.txt', 'w') as f:
-   for i in range(10):
+   for i in range(100):
        random.shuffle(data)
        f.write(''.join(data))
